@@ -20,7 +20,7 @@ html{
 
 body{
     margin: 0px auto;
-    padding: 0px 100px;
+    padding: 0px clamp(5px, 5vw + 10px, 120px);
     background-color: black;
     color: var(--white);
     position: relative;
@@ -196,12 +196,11 @@ a:hover{
 }
 
 .hero-slider-container{
-    width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow-x: hidden;
-    margin-top: 30px;
+    margin-top: 50px;
     position: relative;
     z-index: 1;
 }
@@ -211,7 +210,6 @@ a:hover{
     justify-content: center;
     align-items: center;
     transition: 0.25s ease;
-    margin-top: 40px;
 }
 
 .hero-slide{
@@ -220,8 +218,8 @@ a:hover{
 }
 
 .hero-title{
-    font-size: 3.5rem;
-    max-width: 60%;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    width: clamp(20%, 50vw, 70%);
     line-height: 60px;
 }
 
@@ -233,15 +231,15 @@ a:hover{
 }
 
 .hero-mini-btn{
-    height: 150px;
-    min-width: 150px;
+    height: clamp(100px, 10vw, 200px);
+    min-width: clamp(100px, 10vw, 200px);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
     color: var(--primary-color);
     border-radius: 100px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
     border: solid 1.5px var(--white);
     cursor: pointer;
     transition: all 0.5s ease;
@@ -322,7 +320,7 @@ a:hover{
 
 .about-img-big{
     height: 450px;
-    width: 380px;
+    width: clamp(350px, 40vw, 400px);
     border: solid 5px var(--highlight-color);
     object-fit: cover;  
     object-position: left;
@@ -332,7 +330,7 @@ a:hover{
 .about-img-small{
     position: absolute;
     height: 280px;
-    width: 250px;
+    width: clamp(250px, 30vw, 250px);
     left: 40%;
     top: calc(40% - 10px);
     object-fit: cover;
@@ -364,8 +362,8 @@ a:hover{
 }
 
 .about-title{
-    font-size: 2.8rem;
-    line-height: 60px;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 50px;
 }
 
 .about-paragraph{
@@ -413,8 +411,8 @@ a:hover{
 }
 
 .about-contact-btn{
-    height: 150px;
-    min-width: 150px;
+    height: clamp(100px, 10vw, 200px);
+    min-width: clamp(100px, 10vw, 200px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -491,8 +489,7 @@ a:hover{
 }
 
 .our-services-title{
-    width: 80%;
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 500;
 }
 
@@ -545,9 +542,9 @@ a:hover{
 }
 
 .our-service-card{
-    display: flex;
-    width: 300px;
+    width: clamp(250px, 20vw, 350px);
     height: 450px;
+    display: flex;
     justify-content: center;
     align-items: start;
     flex-direction: column;
@@ -653,14 +650,14 @@ a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 40px;
     margin: 40px 0px;
 }
 
 .project{
     color: black;
-    width: 350px;
+    max-width: clamp(300px, 350px, 450px);
 }
 
 .project-2 .project-img, .project-5 .project-img{
@@ -738,7 +735,7 @@ a:hover{
 
 .our-team-comment-container{
     margin: 100px 0px;
-    padding: 0px 100px;
+    padding: 0px 80px;
     position: relative;
 }
 
@@ -892,7 +889,6 @@ a:hover{
     justify-content: start;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .team-member-container{
@@ -913,8 +909,8 @@ a:hover{
 }
 
 .leadership-member-img, .team-member-img{
-    height: 300px;
-    width: 250px;
+    height: clamp(200px, 300px, 350px);
+    width: clamp(100px, 250px, 300px);
     object-fit: cover;
     object-position: top;
     border-radius: 50px;
@@ -939,8 +935,8 @@ a:hover{
 }
 
 .milestone-title{
-    min-width: 70%;
-    font-size: 2.8rem;
+    min-width: 60%;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 500;
 }
 
@@ -958,14 +954,17 @@ a:hover{
 }
 
 .milestone-data-number{
-    font-size: 4rem;
+    white-space: nowrap;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 500;
     text-align: center;
+    word-spacing: -10px;
 }
 
 .milestone-data-slogan{
     font-size: 1rem;
     margin-top: -10px;
+    text-align: center;
 }
 
 .work-with-us-blog-container{
@@ -981,10 +980,11 @@ a:hover{
 }
 
 .work-with-us-container{
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 50px 120px;
+    padding: 50px clamp(10px, 10vw, 120px);
     gap: 10px;
     margin: 100px 80px;
     background: url(imgs/projects-imgs/IMG-20250709-WA0036.jpg);
@@ -1009,13 +1009,16 @@ a:hover{
 }
 
 .work-with-us-title{
-    font-size: 3rem;
+    font-size: clamp(1.7rem, 5vw, 3.5rem);
     font-weight: 500;
     z-index: 100;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .work-with-us-paragraph{
     z-index: 100;
+    font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .work-with-us-btn{
@@ -1105,8 +1108,8 @@ a:hover{
 }
 
 .blog-head{
-    width: 70%;
-    font-size: 2.5rem;
+    max-width: 70%;
+    font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 500;
 }
 
@@ -1141,7 +1144,6 @@ a:hover{
     align-items: center;
     gap: 20px;
     margin: 30px 0px;
-    flex-wrap: wrap;
 }
 
 .blogpage-container{
@@ -1151,7 +1153,7 @@ a:hover{
 }
 
 .blog{
-    width: 350px;
+    max-width: clamp(200px, 340px, 400px);
     height: 400px;
     display: flex;
     align-items: start;
@@ -1180,6 +1182,74 @@ a:hover{
     text-transform: uppercase;
     white-space: nowrap;
     margin: 10px 0px;
+}
+
+
+.our-location-container{
+    min-width: 100%;
+    background-color: white;
+    margin: 0px -100px;
+    padding: 40px 30px 80px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.our-location-content-board-container {
+    width: 80%;
+    background-color: black;
+    padding: 80px 30px 20px 30px;
+}
+
+.our-location-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.location-heading {
+    min-width: 65%;
+}
+
+.location-heading h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.location-heading p {
+    max-width: 80%;
+    font-size: 0.85rem;
+    opacity: 0.5;
+}
+
+.location-sub-info {
+    min-width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.l-sub-info-contacts-title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.l-sub-info-contacts-title img {
+    width: 20px;
+    height: 20px;
+}
+
+.l-sub-info-item p {
+    opacity: 0.5;
+    font-size: 1.1rem;
 }
 
 .footer{
@@ -1243,7 +1313,8 @@ a:hover{
 }
 
 .footer-callus-number, .footer-messageus-email{
-    font-size: 1.6rem;
+    white-space: nowrap;
+    font-size: clamp(1rem, 4vw, 2rem);
     font-weight: 600;
 }
 
@@ -1277,77 +1348,6 @@ a:hover{
 .gototop-btn svg g path{
     stroke: var(--highlight-color);
 }
-
-.our-location-container{
-    min-width: 100%;
-    background-color: white;
-    margin: 0px -100px;
-    padding: 40px 30px 80px 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.our-location-content-board-container {
-    width: 80%;
-    background-color: black;
-    padding: 80px 60px;
-}
-
-.our-location-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 40px;
-}
-
-.location-heading {
-    min-width: 65%;
-}
-
-.location-heading h1 {
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.location-heading p {
-    font-size: 0.85rem;
-    opacity: 0.5;
-}
-
-.location-sub-info {
-    min-width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.l-sub-info-contacts-title {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.l-sub-info-contacts-title img {
-    width: 20px;
-    height: 20px;
-}
-
-.l-sub-info-item p {
-    opacity: 0.5;
-    font-size: 1.1rem;
-}
-
-
-
-
-
 
 .contactus-container{
     min-width: 100%;
@@ -1552,4 +1552,21 @@ a:hover{
     padding: 30px;
     object-fit: cover;
     object-position: center;
+}
+
+#responseMessage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, var(--highlight-color), lightgreen);
+    border-radius: 40px;
+    color: black;
+    font-weight: 500;
+    margin: 10px 0px -20px 0px;
+}
+
+@media (max-width: 120px) {
+
 }

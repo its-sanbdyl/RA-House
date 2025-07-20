@@ -5,7 +5,8 @@ function resize(){
     document.querySelector('.hero').style.height = window.innerHeight + 'px';
     };
 
-    window.addEventListener("resize", resize());
+    window.addEventListener("resize", resize);
+    resize();
 
 //Function of carousel
 

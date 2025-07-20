@@ -13,7 +13,7 @@ function resize(){
 
   // Toggle dropdown on click
   pagesContainer.addEventListener('click', function (e) {
-    e.stopPropagation(); // Prevent click from bubbling
+    e.stopPropagation(); 
     pagesContainer.classList.toggle('active');
   });
 
@@ -42,12 +42,25 @@ form.addEventListener('submit', async (e) => {
   });
 
   const result = await response.json();
-  document.getElementById('responseMessage').textContent = result.message;
+  
+  function clearMessage(){
+    document.getElementById('responseMessage').textContent =! "" ? setTimeout(() => {
+    document.getElementById('responseMessage').textContent = ""
+    }, 4000): document.getElementById('responseMessage').textContent = result.message};
+  clearMessage();
 
-  submitBtn.disabled = false; // Optional: Re-enable after success
+  submitBtn.disabled = false;
 });
 
-});
+// function clearMessage(){
+// if(document.getElementById('responseMessage').textContent = "Email sent successfully!"){
+//   return setTimeout(() => {
+//     document.getElementById('responseMessage').textContent = ""
+//   }, 4000);
+// };
+// }
+// clearMessage();
+
 
 const HeightWin = window.innerHeight / 2;
 
@@ -71,4 +84,4 @@ function setupFAQToggle() {
 }
 
 document.addEventListener('DOMContentLoaded', setupFAQToggle);
-});
+})});
