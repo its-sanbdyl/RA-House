@@ -1,12 +1,52 @@
 // Adjusting the width of body & height of hero section 
 document.addEventListener("DOMContentLoaded", function () {
   function resize(){
-    document.querySelector('body').style.minWidth = window.innerWidth + 'px';
-    document.querySelector('.hero').style.height = window.innerHeight + 'px';
+    document.querySelector('body').style.width = window.innerWidth + 'px';
     };
 
     window.addEventListener("resize", resize);
     resize();
+
+
+//Function of Navbar Dropdown Bar
+
+  const barIcon = document.querySelector(".navbar-bar-icon");
+  const crossIcon = document.querySelector(".navbar-cross-icon");
+  const dropdownMenu = document.querySelector(".navbar-bar-dropdown");
+
+  dropdownMenu.style.display = "none";
+  crossIcon.style.display = "none";
+
+  barIcon.addEventListener("click", () => {
+    dropdownMenu.style.display = "flex";
+    barIcon.style.display = "none";
+    crossIcon.style.display = "inline-block";
+  });
+
+  crossIcon.addEventListener("click", () => {
+    dropdownMenu.style.display = "none";
+    barIcon.style.display = "inline-block";
+    crossIcon.style.display = "none";
+  });
+
+//Function of Pages Inside Navbar Dropdown
+
+  //Page Dropdown Function of the Navbar
+  const SubPagesContainer = document.getElementById('sub-pagesDropdown');
+
+  if (!pagesContainer) return;
+
+  // Toggle dropdown on click
+  SubPagesContainer.addEventListener('click', function (e) {
+    e.stopPropagation(); // Prevent click from bubbling
+    SubPagesContainer.classList.toggle('active');
+  });
+
+  // Hide dropdown on outside click
+  document.addEventListener('click', function () {
+    SubPagesContainer.classList.remove('active');
+  });
+
 
 //Function of carousel
 
@@ -84,9 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener('scroll', () => {
   scrollY >= HeightOrigin ? document.querySelector('.gototop-btn').style.display = "flex" : document.querySelector('.gototop-btn').style.display = "none";
-  scrollY >= HeightOrigin * 2 ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 3))" : document.querySelector('.navbar').style.background = "transparent";
+  scrollY >= HeightOrigin * 2 ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.9))" : document.querySelector('.navbar').style.background = "transparent";
   });
-
 
 });
 

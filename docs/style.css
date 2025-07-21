@@ -48,6 +48,11 @@ body{
     transform: translateX();
 }
 
+.hero {
+    min-width: 100vw;
+    height: 100vh;
+}
+
 .sub-hero{
     background: url(imgs/projects-imgs/IMG-20250709-WA0018.jpg);
     background-position: 0em -300px;
@@ -87,19 +92,19 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 80px;
+    min-height: 65px;
     padding: 5px 80px;
-    margin: 0px -80px;
+    top: 0;
+    left: 0;
     z-index: 100000000;
     position: fixed;
     border-end-start-radius: 40px;
     border-end-end-radius: 40px;
-    transition: all 1s ease;
 }
 
 a{
     text-decoration: none;
-    color: var(--white); /**Temporary**/
+    color: var(--white);
 }
 
 a:hover{
@@ -112,7 +117,7 @@ a:hover{
 }
 
 .logo{
-    width: 80px;
+    width: 60px;
     aspect-ratio: 1;
 }
 
@@ -124,6 +129,38 @@ a:hover{
     font-weight: 600;
     z-index: 1000;
     white-space: nowrap;
+}
+
+@media(max-width: 1000px) {
+    .nav-links {
+        display: none;
+    }
+
+    .navbar-dropdown-container {
+        display: block !important;
+    }
+}
+
+@media(max-width: 650px) {
+    .hero {
+        height: 80vh;
+    }
+
+    .hero-slider {
+        margin-top: 100px !important;
+    }
+
+
+    .sociallink-container{
+    display: none !important;
+}
+   
+    .hero-slider-btn-container{
+    scale: 0.8 !important;
+    top: 45% !important;
+    left: 80% !important;
+}
+
 }
 
 .pages-container{
@@ -202,6 +239,59 @@ a:hover{
     transition: none;
 }
 
+.navbar-bar-icon, .navbar-cross-icon {
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbar-bar-dropdown {
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    translate: -50% -50%;
+    font-size: 1.5rem;
+    margin-top: 240px;
+    margin-left: 20px;
+    padding: 0px 0px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: -1;
+}
+
+.navbar-bar-dropdown .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    padding: 10px 50px;
+    white-space: nowrap;
+    font-size: 1.2rem;
+}
+
+.navbar-bar-dropdown .link:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-pages-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-pages-dropdown a{
+    min-width: 100%;
+    background-color: rgba(36, 36, 36, 0.958);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
 .hero-slider-container{
     display: flex;
     justify-content: space-between;
@@ -216,7 +306,13 @@ a:hover{
     justify-content: center;
     align-items: center;
     transition: 0.25s ease;
-    margin-top: 180px;
+    margin-top: 150px;
+}
+
+@media(max-width: 885px) {
+    .hero-slider {
+        margin-top: 140px;
+    }
 }
 
 .hero-slide{
@@ -225,8 +321,8 @@ a:hover{
 }
 
 .hero-title{
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    width: clamp(20%, 50vw, 70%);
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    width: clamp(25%, 50vw, 70%);
     line-height: 60px;
 }
 
@@ -235,6 +331,30 @@ a:hover{
     width: 50%;
     margin-top: 20px;
     gap: 50px;
+}
+
+@media(max-width: 800px){
+    .hero-title {
+        line-height: 50px;
+    }
+
+    .hero-mini-content{
+    display: flex;
+    width: 40%;
+    margin-top: 20px;
+    gap: 50px;
+    text-wrap: wrap;
+}
+
+    .hero-mini-p {
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width: 560px) {
+    .hero-mini-p {
+        max-width: 80%;
+    }
 }
 
 .hero-mini-btn{
@@ -938,7 +1058,15 @@ a:hover{
 }
 
 @media(max-width: 1120px) {
+    .client-leadership-container{
+    padding: 75px;
+}
 
+    .client-logo{
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
     .client-container{
     flex-direction: column;
     align-items: start;
@@ -1424,7 +1552,7 @@ a:hover{
 @media(max-width: 1000px) {
     .footer-top-content-container{
     flex-wrap: wrap;
-    padding: 30px 0px;
+    padding: 0px 0px 50px 0px;
     justify-content: space-around;
     align-items: end;
 }
@@ -1449,8 +1577,8 @@ a:hover{
 }
 
 .footer-office-address{
-    width: 80%;
-    font-size: 1.25rem;
+    width: 90%;
+    font-size: clamp(1rem, 2vw, 2rem);
     font-weight: 600;
 }
 
