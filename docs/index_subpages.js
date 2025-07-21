@@ -42,25 +42,10 @@ form.addEventListener('submit', async (e) => {
   });
 
   const result = await response.json();
-  
-  function clearMessage(){
-    document.getElementById('responseMessage').textContent =! "" ? setTimeout(() => {
-    document.getElementById('responseMessage').textContent = ""
-    }, 4000): document.getElementById('responseMessage').textContent = result.message};
-  clearMessage();
+  document.getElementById('responseMessage').textContent != "" ? document.getElementById('responseMessage').textContent =result.message : setTimeout(document.getElementById('responseMessage').textContent = "", 5000);
 
   submitBtn.disabled = false;
 });
-
-// function clearMessage(){
-// if(document.getElementById('responseMessage').textContent = "Email sent successfully!"){
-//   return setTimeout(() => {
-//     document.getElementById('responseMessage').textContent = ""
-//   }, 4000);
-// };
-// }
-// clearMessage();
-
 
 const HeightWin = window.innerHeight / 2;
 
@@ -84,4 +69,12 @@ function setupFAQToggle() {
 }
 
 document.addEventListener('DOMContentLoaded', setupFAQToggle);
+
+
+
 })});
+const HeightOrigin = window.innerHeight / 3;
+
+  document.addEventListener('scroll', () => {
+  scrollY >= HeightOrigin ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 5))" : document.querySelector('.navbar').style.background = "transparent";
+  });

@@ -1,7 +1,7 @@
 // Adjusting the width of body & height of hero section 
 document.addEventListener("DOMContentLoaded", function () {
-function resize(){
-    document.querySelector('body').style.maxWidth = window.innerWidth + 'px';
+  function resize(){
+    document.querySelector('body').style.minWidth = window.innerWidth + 'px';
     document.querySelector('.hero').style.height = window.innerHeight + 'px';
     };
 
@@ -84,7 +84,9 @@ function resize(){
 
   document.addEventListener('scroll', () => {
   scrollY >= HeightOrigin ? document.querySelector('.gototop-btn').style.display = "flex" : document.querySelector('.gototop-btn').style.display = "none";
+  scrollY >= HeightOrigin * 2 ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 3))" : document.querySelector('.navbar').style.background = "transparent";
   });
+
 
 });
 
