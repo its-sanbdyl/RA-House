@@ -31,21 +31,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Function of Pages Inside Navbar Dropdown
 
-  //Page Dropdown Function of the Navbar
-  const SubPagesContainer = document.getElementById('sub-pagesDropdown');
+const subPagesContainer = document.getElementById('sub-pagesContainer');
+const subPagesDropdown = document.getElementById('sub-pagesDropdown');
 
-  if (!pagesContainer) return;
+// Toggle dropdown on click
+subPagesContainer.addEventListener('click', (event) => {
+  event.stopPropagation(); // Prevent click from bubbling
+  subPagesDropdown.classList.toggle('show-dropdown');
+});
 
-  // Toggle dropdown on click
-  SubPagesContainer.addEventListener('click', function (e) {
-    e.stopPropagation(); // Prevent click from bubbling
-    SubPagesContainer.classList.toggle('active');
-  });
-
-  // Hide dropdown on outside click
-  document.addEventListener('click', function () {
-    SubPagesContainer.classList.remove('active');
-  });
+// Close when clicking outside
+document.addEventListener('click', (event) => {
+  // Check if click is outside both container and dropdown
+  if (!subPagesContainer.contains(event.target) && !subPagesDropdown.contains(event.target)) {
+    subPagesDropdown.classList.remove('show-dropdown');
+  }
+});
 
 
 //Function of carousel
@@ -104,22 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   showSlide(currentIndex);
   startAutoSlide();
 
-  //Page Dropdown Function of the Navbar
-  const pagesContainer = document.getElementById('pagesDropdown');
-
-  if (!pagesContainer) return;
-
-  // Toggle dropdown on click
-  pagesContainer.addEventListener('click', function (e) {
-    e.stopPropagation(); // Prevent click from bubbling
-    pagesContainer.classList.toggle('active');
-  });
-
-  // Hide dropdown on outside click
-  document.addEventListener('click', function () {
-    pagesContainer.classList.remove('active');
-  });
-
+  //Show/Hide of Go To Top Buttton & Navbar
   const HeightOrigin = window.innerHeight / 2;
 
   document.addEventListener('scroll', () => {

@@ -6,20 +6,38 @@ function resize(){
 
     window.addEventListener("resize", resize());
 
-  //Page Dropdown Function of the Navbar
-  const pagesContainer = document.getElementById('pagesDropdown');
+    //Function of Navbar Dropdown Bar
 
-  if (!pagesContainer) return;
+  const barIcon = document.querySelector(".navbar-bar-icon");
+  const crossIcon = document.querySelector(".navbar-cross-icon");
+  const dropdownMenu = document.querySelector(".navbar-bar-dropdown");
 
-  // Toggle dropdown on click
-  pagesContainer.addEventListener('click', function (e) {
-    e.stopPropagation(); 
-    pagesContainer.classList.toggle('active');
+  dropdownMenu.style.display = "none";
+  crossIcon.style.display = "none";
+
+  barIcon.addEventListener("click", () => {
+    dropdownMenu.style.display = "flex";
+    barIcon.style.display = "none";
+    crossIcon.style.display = "inline-block";
   });
 
-  // Hide dropdown on outside click
+  crossIcon.addEventListener("click", () => {
+    dropdownMenu.style.display = "none";
+    barIcon.style.display = "inline-block";
+    crossIcon.style.display = "none";
+  });
+
+//Function of Pages Inside Navbar Dropdown
+
+  const SubPagesContainer = document.getElementById('sub-pagesDropdown');
+
+  SubPagesContainer.addEventListener('click', function (e) {
+    e.stopPropagation();
+    SubPagesContainer.classList.toggle('active');
+  });
+
   document.addEventListener('click', function () {
-    pagesContainer.classList.remove('active');
+    SubPagesContainer.classList.remove('active');
   });
 
 
@@ -42,7 +60,11 @@ form.addEventListener('submit', async (e) => {
   });
 
   const result = await response.json();
-  document.getElementById('responseMessage').textContent != "" ? document.getElementById('responseMessage').textContent =result.message : setTimeout(document.getElementById('responseMessage').textContent = "", 5000);
+  document.getElementById('responseMessage').textContent =result.message;
+
+  setTimeout(() => {
+    responseMessage.textContent = '';
+  }, 3000);
 
   submitBtn.disabled = false;
 });
@@ -70,11 +92,9 @@ function setupFAQToggle() {
 
 document.addEventListener('DOMContentLoaded', setupFAQToggle);
 
-
-
 })});
 const HeightOrigin = window.innerHeight / 3;
 
   document.addEventListener('scroll', () => {
-  scrollY >= HeightOrigin ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 5))" : document.querySelector('.navbar').style.background = "transparent";
+  scrollY >= HeightOrigin ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.9))" : document.querySelector('.navbar').style.background = "transparent";
   });
