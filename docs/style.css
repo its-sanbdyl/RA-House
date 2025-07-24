@@ -72,7 +72,7 @@ body{
 }
 
 .aboutus-title{
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 5vw, 3rem);
     z-index: 1;
     font-weight: 400;
 }
@@ -86,6 +86,7 @@ body{
 
 .aboutus-link{
     text-transform: uppercase;
+    font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .navbar{
@@ -93,7 +94,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 65px;
+    min-height: 55px;
     padding: 5px 80px;
     top: 0;
     left: 0;
@@ -118,8 +119,7 @@ a:hover{
 }
 
 .logo{
-    width: 60px;
-    aspect-ratio: 1;
+    height: 50px;
 }
 
 .nav-links{
@@ -195,6 +195,11 @@ a:hover{
     transition: all 0.5s ease;
 }
 
+.pages-dropdown.show-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
 .pages-dropdown-link{
     position: relative;
     width: 100%;
@@ -245,7 +250,7 @@ a:hover{
 }
 
 .navbar-bar-icon, .navbar-cross-icon {
-    height: 40px;
+    height: 30px;
     cursor: pointer;
     position: relative;
 }
@@ -322,8 +327,6 @@ a:hover{
   display: flex;
 }
 
-
-
 .hero-slider-container{
     display: flex;
     justify-content: space-between;
@@ -353,8 +356,8 @@ a:hover{
 }
 
 .hero-title{
-    font-size: clamp(2.2rem, 4vw, 4rem);
-    width: clamp(25%, 50vw, 70%);
+    font-size: clamp(1.8rem, 4vw, 4rem);
+    width: clamp(23%, 50vw, 70%);
     line-height: 60px;
 }
 
@@ -490,7 +493,7 @@ a:hover{
 
 .about-img-big{
     height: 450px;
-    width: clamp(350px, 40vw, 400px);
+    width: clamp(320px, 40vw, 400px);
     border: solid 5px var(--highlight-color);
     object-fit: cover;  
     object-position: left;
@@ -500,7 +503,7 @@ a:hover{
 .about-img-small{
     position: absolute;
     height: 280px;
-    width: clamp(250px, 30vw, 250px);
+    width: clamp(220px, 30vw, 250px);
     left: 40%;
     top: calc(40% - 10px);
     object-fit: cover;
@@ -622,7 +625,7 @@ a:hover{
     }
 
     .about-step{
-        max-width: 50%
+        min-width: 70%
     }
 
     .about-step-3 {
@@ -637,7 +640,7 @@ a:hover{
 }
 
 .about-step{
-    width: 100%;
+    max-width: 25%;
     height: 200px;
     display: flex;
     justify-content: center;
@@ -993,12 +996,66 @@ a:hover{
     gap: 4em;
 }
 
-.commentor-img{
-    min-width: 30%;
-    min-height: 300px;
-    border: solid 1px;
+@media(max-width: 800px) {
+    .our-team-comment-container{
+    margin: 100px 0px;
+    padding: 0px 20px;
+}
+
+    .comment-slide{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative !important;
+}
+
+    .commentor-img{
+    width: 200px;
+    max-height: 200px !important;
     object-fit: cover;
-    object-position: center;
+    object-position: top !important;
+    border: solid 5px var(--highlight-color);
+}
+
+    .commentor-comment-container {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .comment-paragraph{
+    min-width: 100%;
+}
+     .comment-sign{
+        min-width: 100%;
+}
+    .comment-hr{
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    min-width: 100%;
+    margin: 0;
+    border: solid 1.8px var(--highlight-color);
+}
+
+    .comment-slider-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute !important;
+    top: 42% !important;
+    left: 0% !important;
+    gap: 20px;
+    opacity: 0.5;
+}
+}
+
+.commentor-img{
+    min-width: 35%;
+    max-height: 350px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 40px;
 }
 
 .comment-sign{
@@ -1051,10 +1108,16 @@ a:hover{
     color: var(--highlight-color);
 }
 
+.comment-slider-prev-btn:hover, .comment-slider-next-btn:hover {
+    box-shadow: 0px 0px 30px var(--highlight-color);
+    color: var(--highlight-color);
+    border: none;
+}
+
 .client-leadership-container{
     min-width: 100%;
     margin: 0px -100px;
-    padding: 70px;
+    padding: clamp(30px, 5vw, 70px);
     background-color: var(--white);
     color: black;
 }
@@ -1176,6 +1239,7 @@ a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     margin-left: -100px;
     padding: 100px;
     color: black;
@@ -1183,6 +1247,7 @@ a:hover{
     color: black;
     gap: 50px;
 }
+
 
 .leadership-member-card,.team-member-card{
     text-align: center;
@@ -1295,7 +1360,7 @@ a:hover{
 }
 
 .work-with-us-title{
-    font-size: clamp(1.7rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
     font-weight: 500;
     z-index: 100;
     text-align: center;
@@ -1304,7 +1369,7 @@ a:hover{
 
 .work-with-us-paragraph{
     z-index: 100;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.6rem, 2vw, 1rem);
 }
 
 .work-with-us-btn{
@@ -1343,7 +1408,7 @@ a:hover{
     background-color: white;
     margin: 0px -100px;
     color: black;
-    padding: 100px 300px;
+    padding: 100px clamp(20px, 10vw + 50px, 300px);
     gap: 30px; 
 }
 
@@ -1352,6 +1417,7 @@ a:hover{
 }
 
 .faq-title-arrow{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1362,8 +1428,8 @@ a:hover{
 
 .faq-title {
     font-weight: 400;
-    max-width: 80%;
-    font-size: 1.1rem;
+    max-width: 90%;
+    font-size: clamp(0.7rem, 3vw, 1.1rem);
 }
 
 .faq-arrow {
@@ -1711,6 +1777,21 @@ a:hover{
     display: flex;
 }
 
+@media(max-width: 1000px) {
+    .contactus-container{
+        min-width: 100%;
+        background-color: white;
+        margin: 0px -100px;
+        padding: 80px 100px 50px 100px;
+    }
+
+    .contactus-data-form-container {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
 .contactus-data, .contactus-form{
     min-width: 50%;
 }
@@ -1728,7 +1809,7 @@ a:hover{
 }
 
 .callus-container p {
-    font-size: 2rem;
+    font-size: clamp(1.3rem, 3vw, 2rem);
     font-weight: 500;
 }
 
@@ -1739,7 +1820,7 @@ a:hover{
 }
 
 .drop-message-container p {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 600;
 }
 
@@ -1862,9 +1943,9 @@ a:hover{
 
 .contactus-address-card {
    width: 400px;
-   height: 250px;
+   height: clamp(180px, 4vh, 250px);
    background-color: black;
-   padding: 45px 30px;
+   padding: clamp(25px, 1vw, 150px) 30px;
 }
 
 .contactus-address-card h2 {
@@ -1875,7 +1956,7 @@ a:hover{
 }
 
 .contactus-address-card p {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .contactus-imgs-container {
@@ -1885,6 +1966,26 @@ a:hover{
     align-items: center;
     gap: 3em;
     flex-direction: row;
+}
+
+@media(max-width: 1000px) {
+    .contactus-address-imgs-container {
+        padding: 50px 0px 0px 0px;
+    }
+
+    .contactus-imgs-container {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .contactus-img-1 {
+    width: 100%;
+    padding: 0px;
+}
+
+.contactus-img-2 {
+    min-width: 90%;
+}
 }
 
 .contactus-img-1 {
@@ -1916,3 +2017,24 @@ a:hover{
     margin: 10px 0px -20px 0px;
 }
 
+.copyright-disclaimer-pp-container {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0px;
+    height: 20px;   
+}
+
+.copyright-disclaimer-pp-container a {
+    white-space: nowrap;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+}
+
+.copyright-disclaimer-pp-container hr {
+    display: flex;
+    width: 1px;
+    height: 10px;
+    border: solid 0.05px var(--highlight-color);
+}

@@ -1,0 +1,10 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Allow: /
+
+sitemap: https://www.rahouse.com.np/sitemap.xml
