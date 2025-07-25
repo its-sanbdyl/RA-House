@@ -79,6 +79,12 @@
     border-bottom: solid 1px white;
 }
 
+.blog-sociallink-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .blog-sociallink {
     background-color: black;
     border-radius: 50px;

@@ -184,9 +184,9 @@
 }
 
 .project-2nd-2nd-img{
-    width: 100%;
+    max-width: 100%;
     height: 400px;
-    padding: 0px 0px 40px 0px;
+    padding: 0px 10px 40px 10px;
 }
 
 .project-3rd-img-container{
@@ -202,9 +202,17 @@
         flex-direction: column;
     }
 }
+.project-2nd-2nd-img-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+} 
 
 .project-img-paragraph{
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    padding: 0px 40px 0px 50px;
 }
 
 .project-img-paragraph h2{

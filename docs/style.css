@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: poppins, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root{
@@ -25,6 +26,7 @@ body{
     color: var(--white);
     position: relative;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 .hero, .sub-hero{
@@ -142,9 +144,15 @@ a:hover{
     }
 }
 
+@media(max-width: 700px) {
+    .hero-mini-p {
+    width: 80% !important;
+}
+}
+
 @media screen and (max-width: 650px) {
     .hero {
-        height: 80vh;
+        height: 75vh !important;
     }
 
     .hero-slider {
@@ -155,9 +163,21 @@ a:hover{
     .sociallink-container{
     display: none !important;
 }
+
+.hero-mini-content{
+        display: flex;
+        width: 40%;
+        margin-top: 20px;
+        gap: 30px !important;
+        text-wrap: wrap;
+}
+
+.hero-mini-p {
+    width: 80% !important;
+}
    
     .hero-slider-btn-container{
-    scale: 0.8 !important;
+    scale: 0.7 !important;
     top: 45% !important;
     left: 80% !important;
 }
@@ -357,7 +377,7 @@ a:hover{
 
 .hero-title{
     font-size: clamp(1.8rem, 4vw, 4rem);
-    width: clamp(23%, 50vw, 70%);
+    max-width: clamp(23%, 50vw, 70%);
     line-height: 60px;
 }
 
@@ -370,24 +390,30 @@ a:hover{
 
 @media(max-width: 800px){
     .hero {
-    height: 80vh;
+        height: 80vh;
     }
 
     .hero-title {
-        line-height: 50px;
+        line-height: 40px;
     }
 
     .hero-mini-content{
-    display: flex;
-    width: 40%;
-    margin-top: 20px;
-    gap: 50px;
-    text-wrap: wrap;
+        display: flex;
+        width: 40%;
+        margin-top: 20px;
+        gap: 50px;
+        text-wrap: wrap;
 }
 
     .hero-mini-p {
         font-size: 0.8rem;
     }
+
+    .comment-slider-prev-btn, .comment-slider-next-btn{
+    height: 60px !important;
+    min-width: 60px !important;
+}
+
 }
 
 @media(max-width: 560px) {
@@ -571,6 +597,10 @@ a:hover{
     padding: 5px 0px;
 }
 
+.about-bar-title {
+    white-space: nowrap;
+}
+
 .about-bar-1{
     width: 80%;
     min-height: 5px;
@@ -732,7 +762,7 @@ a:hover{
 }
 
 .our-services-title{
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 500;
 }
 
@@ -883,9 +913,9 @@ a:hover{
 }
 
 .our-projects-title{
-    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-size: clamp(1.4rem, 5vw, 3rem);
     font-weight: 500;
-    width: 80%;
+    width: 85%;
 }
 
 .project-container{
@@ -1043,7 +1073,7 @@ a:hover{
     display: flex;
     justify-content: space-between;
     position: absolute !important;
-    top: 42% !important;
+    top: 20% !important;
     left: 0% !important;
     gap: 20px;
     opacity: 0.5;
@@ -1059,9 +1089,9 @@ a:hover{
 }
 
 .comment-sign{
-    font-size: 10em;
+    font-size: 9em;
     width: fit-content;
-    height: 100px;
+    height: 80px;
     margin: 20px 0px 0px 0px;
     color: transparent;
     font-family: BIZ UDPGothic, arial, poppins;
@@ -1117,7 +1147,7 @@ a:hover{
 .client-leadership-container{
     min-width: 100%;
     margin: 0px -100px;
-    padding: clamp(30px, 5vw, 70px);
+    padding: 0px 80px;
     background-color: var(--white);
     color: black;
 }
@@ -1143,7 +1173,6 @@ a:hover{
 
 .client-logo{
     max-width: 150px;
-    height: 150px;
     object-fit: contain;
 }
 
@@ -1287,7 +1316,7 @@ a:hover{
 
 .milestone-title{
     min-width: 60%;
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     font-weight: 500;
 }
 
@@ -1313,7 +1342,7 @@ a:hover{
 }
 
 .milestone-data-slogan{
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 5vw, 1rem);
     margin-top: -10px;
     text-align: center;
 }
@@ -1754,7 +1783,7 @@ a:hover{
     border-radius: 50px;
     padding: 20px;
     right: 2%;
-    top: 86%;
+    bottom: 5%;
     border: solid 1.5px var(--highlight-color);
     z-index: 10000;
     transition: all 0.5s ease;
@@ -1786,10 +1815,13 @@ a:hover{
     }
 
     .contactus-data-form-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: center;
         gap: 20px;
     }
+    .cs-form-head {
+    scale: 0.9;
+}
 }
 
 .contactus-data, .contactus-form{
@@ -1800,6 +1832,10 @@ a:hover{
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+.cs-form-head {
+    white-space: nowrap;
 }
 
 .callus-container h4 {
@@ -1854,6 +1890,36 @@ a:hover{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+@media(max-width: 500px) {
+    .contactus-form {
+        min-width: calc(50% + 100px);
+        min-height: 600px;
+        background-color: black;
+        padding: 30px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cs-form-btn {
+        scale: 0.8;
+    }
+    .contactus-address {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .contactus-address-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .contactus-address-card p {
+        text-align: center;
+    }
 }
 
 .c-form-items {
@@ -1976,11 +2042,11 @@ a:hover{
     .contactus-imgs-container {
         flex-direction: column;
         gap: 1em;
+        height: 5%;
     }
 
     .contactus-img-1 {
     width: 100%;
-    padding: 0px;
 }
 
 .contactus-img-2 {

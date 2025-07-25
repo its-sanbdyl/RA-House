@@ -1,11 +1,11 @@
 // Adjusting the width of body & height of hero section 
 document.addEventListener("DOMContentLoaded", function () {
-  function resize(){
-    document.querySelector('body').style.width = window.innerWidth + 'px';
-    };
+// function resize(){
+//   document.querySelector('body').style.width = window.innerWidth + 'px';
+//   };
 
-    window.addEventListener("resize", resize);
-    resize();
+//   window.addEventListener("resize", resize);
+//   resize();
 
   //Navbar Pages Dropdown
 
