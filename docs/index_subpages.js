@@ -1,11 +1,11 @@
 // Adjusting the width of body & height of hero section 
 document.addEventListener("DOMContentLoaded", function () {
-function resize(){
-    document.querySelector('body').style.maxWidth = window.innerWidth + 'px';
-    };
 
-    window.addEventListener("resize", resize);
-    resize();
+  //Loader
+      setTimeout(() => {
+        document.getElementById("loader-wrapper").classList.add("fade-out");
+        document.body.classList.add("loaded");
+      }, 500);
 
 //Navbar Pages Dropdown
 
@@ -60,6 +60,26 @@ function resize(){
     }
   });
 
+  //FAQ Show/Hide Toggle
+  const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item, index) => {
+        const titleArrow = item.querySelector(".faq-title-arrow");
+        const answer = item.querySelector(".faq-answer");
+        const arrow = item.querySelector(".faq-arrow");
+
+        titleArrow.addEventListener("click", () => {
+            const isOpen = answer.style.display === "block";
+
+            document.querySelectorAll(".faq-answer").forEach(ans => ans.style.display = "none");
+            document.querySelectorAll(".faq-arrow").forEach(arw => arw.style.transform = "rotate(0deg)");
+
+            if (!isOpen) {
+                answer.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+            }
+        });
+    });
 
   //Contact Form
 const form = document.getElementById('contactForm');
@@ -94,23 +114,6 @@ const HeightWin = window.innerHeight / 2;
 document.addEventListener('scroll', () => {
   scrollY >= HeightWin ? document.querySelector('.gototop-btn').style.display = "flex" : document.querySelector('.gototop-btn').style.display = "none";
 
-
-function setupFAQToggle() {
-  const arrows = document.querySelectorAll('.faq-arrow');
-
-  arrows.forEach((arrow, index) => {
-    const answer = document.getElementById(`faq-answer-${index + 1}`);
-
-    arrow.addEventListener('click', () => {
-      const isVisible = answer.style.display === "flex";
-
-      answer.style.display = isVisible ? "none" : "flex";
-      arrow.style.transform = isVisible ? "rotateX(0deg)" : "rotateX(-180deg)";
-    });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', setupFAQToggle);
 
 })});
 const HeightOrigin = window.innerHeight / 3;

@@ -4,6 +4,9 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: BraveBot
+Allow: /
+
 User-agent: *
 Allow: /
 

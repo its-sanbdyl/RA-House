@@ -1,11 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  //Loader
+      setTimeout(() => {
+        document.getElementById("loader-wrapper").classList.add("fade-out");
+        document.body.classList.add("loaded");
+      }, 500);
+    });
+
 // Adjusting the width of body & height of hero section 
 document.addEventListener("DOMContentLoaded", function () {
-// function resize(){
-//   document.querySelector('body').style.width = window.innerWidth + 'px';
-//   };
-
-//   window.addEventListener("resize", resize);
-//   resize();
 
   //Navbar Pages Dropdown
 
@@ -71,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const backgroundImages = [
     'url("imgs/projects-imgs/IMG-20250709-WA0027.jpg")',
     'url("imgs/projects-imgs/IMG-20250709-WA0028.jpg")',
-    'url("imgs/projects-imgs/IMG-20250709-WA0041.jpg")'
+    'url("imgs/projects-imgs/IMG-20250709-WA0041.jpg")',
+    'url("imgs/projects-imgs/IMG-20250709-WA0020.jpg")',
+    'url("imgs/projects-imgs/IMG-20250709-WA0038.jpg")',
   ];
 
   let currentIndex = 0;
