@@ -144,7 +144,7 @@ body{
 
 .sub-hero{
     background: url(imgs/projects-imgs/IMG-20250709-WA0018.jpg);
-    background-position: 0em -300px;
+    background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -238,7 +238,7 @@ a:hover{
 
 @media screen and (max-width: 650px) {
     .hero {
-        height: 75vh !important;
+        height: 90vh !important;
     }
 
     .hero-slider {
@@ -374,11 +374,11 @@ a:hover{
     align-items: center;
     flex-direction: column;
     position: absolute;
-    translate: -50% -50%;
+    translate: -50% -11%;
     font-size: 1.5rem;
-    margin-top: 251px;
+    
     margin-left: 20px;
-    padding: 20% 0px 0px 0px;
+    padding: 100px 0px 0px 0px;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: -1;
 }
@@ -464,6 +464,7 @@ a:hover{
 
 .hero-slide {
     width: 1200px;
+    height: fit-content;
     padding: 10px;
 }
 
@@ -482,7 +483,7 @@ a:hover{
 
 @media(max-width: 800px) {
     .hero {
-        height: 80vh;
+        height: 100vh;
     }
 
     .hero-title {
@@ -690,6 +691,7 @@ a:hover{
 }
 
 .about-bar-title {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
     white-space: nowrap;
 }
 
@@ -738,7 +740,13 @@ a:hover{
     justify-content: center;
     align-items: center;
     padding: 100px 0px;
-    gap: 5%;
+    gap: 10%;
+}
+
+@media(max-width: 412px) {
+    .about-steps-container {
+    gap: 50px !important;
+}   
 }
 
 @media(max-width: 960px) {
@@ -774,7 +782,7 @@ a:hover{
 }
 
 .about-step-2 {
-    margin-top: 60px;
+    margin-top: 10%;
 }
 
 .about-step-num {
@@ -1491,16 +1499,17 @@ a:hover{
 }
 
 .work-with-us-title{
-    font-size: clamp(1.2rem, 5vw, 3.5rem);
+
+    font-size: clamp(1.3rem, 5vw, 3.5rem);
     font-weight: 500;
     z-index: 100;
     text-align: center;
-    white-space: nowrap;
+    text-wrap: wrap;
 }
 
 .work-with-us-paragraph{
     z-index: 100;
-    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .work-with-us-btn{
@@ -1560,7 +1569,7 @@ a:hover{
 .faq-title {
     font-weight: 400;
     max-width: 90%;
-    font-size: clamp(0.7rem, 3vw, 1.1rem);
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
 }
 
 .faq-arrow {
@@ -1570,7 +1579,7 @@ a:hover{
 
 .faq-answer {
     padding: 20px 50px;
-    font-size: 1rem;
+    font-size: clamp(0.7rem, 3vw, 1rem);
     display: none;
     background-color: hsla(0, 0%, 0%, 0.09);
 }
