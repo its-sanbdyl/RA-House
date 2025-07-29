@@ -84,10 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //Contact Form
 const form = document.getElementById('contactForm');
 const submitBtn = document.querySelector("#contactForm button[type='submit']");
-const responseMessage = document.getElementById('responseMessage');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   submitBtn.disabled = true;
 
   const formData = new FormData(e.target);
@@ -100,13 +100,14 @@ form.addEventListener('submit', async (e) => {
   });
 
   const result = await response.json();
-  responseMessage.textContent = result.message;
+  document.getElementById('responseMessage').textContent =result.message;
 
   setTimeout(() => {
     responseMessage.textContent = '';
   }, 3000);
 
   submitBtn.disabled = false;
+});
 
 const HeightWin = window.innerHeight / 2;
 
@@ -119,4 +120,4 @@ const HeightOrigin = window.innerHeight / 3;
 
   document.addEventListener('scroll', () => {
   scrollY >= HeightOrigin ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.9))" : document.querySelector('.navbar').style.background = "transparent";
-  })});
+  });
