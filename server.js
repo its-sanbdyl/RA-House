@@ -8,14 +8,26 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const apiKey = process.env.BREVO_API_KEY;
+const allowedOrigins = [
+  "https://rahouse.com.np",
+  "https://www.rahouse.com.np"
+];
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "docs")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors({
-  origin: "https://www.rahouse.com.np",
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    }
+  })
+);
 
 app.post("/api/contactus.html", async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
