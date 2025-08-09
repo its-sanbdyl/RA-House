@@ -29,7 +29,11 @@ app.use(
   })
 );
 
-app.post("/api/contactus.html", async (req, res) => {
+app.get("/contactus.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "contactus.html"));
+});
+
+app.post("/contactus.html", async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
 
   try {
