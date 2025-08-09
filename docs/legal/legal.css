@@ -35,3 +35,16 @@
 .ul-tnc-list-container {
     list-style: square;
 }
+
+.sociallink-dd-container {
+    display: none;
+}
+
+@media(max-width: 1000px) {
+    .sociallink-dd-container {
+        display: flex !important;
+        scale: 0.8;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}

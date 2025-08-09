@@ -80,10 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentIndex = 0;
   const totalSlides = slides.length;
+  document.querySelector('.hero-slider').style.width = `${totalSlides * 100}vw`;
   let autoSlideInterval;
 
   function showSlide(index) {
-    slider.style.transform = `translateX(-${index * 1200}px)`;
+    slider.style.transform = `translateX(-${index * 100}vw)`;
     heroContainer.style.backgroundImage = backgroundImages[index];
   }
 
@@ -117,6 +118,29 @@ document.addEventListener("DOMContentLoaded", function () {
     startAutoSlide();
   });
 
+  let StartX = 0;
+
+  heroContainer.addEventListener("touchstart", e => {
+    StartX = e.touches[0].clientX;
+  });
+
+  heroContainer.addEventListener("touchend", e => {
+    let EndX = e.changedTouches[0].clientX;
+    let diff = StartX - EndX;
+
+    if(Math.abs(diff) > 0){
+      if(diff > 50) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+      }
+      else {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      }
+    }
+    stopAutoSlide();
+    showSlide(currentIndex);
+    startAutoSlide();
+  })
+
   showSlide(currentIndex);
   startAutoSlide();
 
@@ -128,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
   scrollY >= HeightOrigin * 2 ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.9))" : document.querySelector('.navbar').style.background = "transparent";
   });
 
+  document.querySelector('.currYear').textContent = new Date().getFullYear();
 });
 
 

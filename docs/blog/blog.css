@@ -110,3 +110,16 @@
     opacity: 0.7;
     font-weight: 600;
 }
+
+.sociallink-dd-container {
+    display: none;
+}
+
+@media(max-width: 1000px) {
+    .sociallink-dd-container {
+        display: flex !important;
+        scale: 0.8;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}

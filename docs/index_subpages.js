@@ -81,43 +81,53 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-  //Contact Form
-const form = document.getElementById('contactForm');
-const submitBtn = document.querySelector("#contactForm button[type='submit']");
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  submitBtn.disabled = true;
-
-  const formData = new FormData(e.target);
-  const data = Object.fromEntries(formData);
-
-  const response = await fetch('/send-email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  const result = await response.json();
-  document.getElementById('responseMessage').textContent =result.message;
-
-  setTimeout(() => {
-    responseMessage.textContent = '';
-  }, 3000);
-
-  submitBtn.disabled = false;
-});
-
+// Go To Top Function    
 const HeightWin = window.innerHeight / 2;
 
 document.addEventListener('scroll', () => {
   scrollY >= HeightWin ? document.querySelector('.gototop-btn').style.display = "flex" : document.querySelector('.gototop-btn').style.display = "none";
+  });
 
-
-})});
+// Appear NavBar After Hero
 const HeightOrigin = window.innerHeight / 3;
 
   document.addEventListener('scroll', () => {
   scrollY >= HeightOrigin ? document.querySelector('.navbar').style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.9))" : document.querySelector('.navbar').style.background = "transparent";
   });
+
+  //Contact form at contactus.html
+
+  document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      const responseEl = document.getElementById('responseMessage');
+
+      const res = await fetch('/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const ReceivedMessage = await res.text();
+
+      responseEl.style.display = 'flex';
+      responseEl.textContent = ReceivedMessage;
+
+      if (ReceivedMessage.trim() === "Message sent successfully!") {
+        responseEl.style.color = "#00ff00";
+      } else {
+        responseEl.style.color = "#cc0000";
+      }
+
+      document.getElementById('contactForm').reset();
+
+      setTimeout(() => {
+        responseEl.style.display = 'none';
+        responseEl.textContent = '';
+      }, 4000);
+    });
+  
+});
+
+document.querySelector('.currYear').textContent = new Date().getFullYear();

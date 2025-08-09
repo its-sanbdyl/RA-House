@@ -1,64 +1,116 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path');
-const rateLimit = require('express-rate-limit');
-require('dotenv').config();
-
-const limiter = rateLimit({
-  windowMs: 10 * 1000,
-  max: 1,
-  message: 'Too many requests. Try again shortly.'
-});
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const axios = require("axios");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
+const apiKey = process.env.BREVO_API_KEY;
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "docs")));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static('docs'));
-app.use('/send-email', limiter);
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: `${EMAIL_USER}`,
-    pass: `${EMAIL_PASS}`,
-  },
-});
-
-app.post('/send-email', (req, res) => {
+app.post("/send", async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
 
-   const mailOptions = {
-    from: `${email}`,
-    to: `${EMAIL_USER}`,
-    subject: subject,
-    text: `
-📩 New Message from RA House Website's Contact Form:
+  try {
+    const response = await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: { name: `${firstName} ${lastName}`, email: "info@rahouse.com.np" },
+        to: [{ email: "info@rahouse.com.np", name: "RA House" }],
+        subject: `New message from RA House website contact form`,
+        htmlContent: `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>New message from RA House website contact form</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f4f6f8;
+              margin: 0;
+              padding: 0;
+            }
+            .container {
+              max-width: 600px;
+              background: #ffffff;
+              margin: 20px auto;
+              border-radius: 8px;
+              overflow: hidden;
+              border: 1px solid #e0e0e0;
+            }
+            .header {
+              background-color: #0d6efd;
+              color: #ffffff;
+              padding: 16px;
+              text-align: center;
+              font-size: 20px;
+              font-weight: bold;
+            }
+            .content {
+              padding: 20px;
+              color: #333333;
+              line-height: 1.5;
+            }
+            .content p {
+              margin: 8px 0;
+            }
+            .label {
+              font-weight: bold;
+              color: #0d6efd;
+            }
+            .footer {
+              background-color: #f4f6f8;
+              padding: 12px;
+              font-size: 12px;
+              color: #777777;
+              text-align: center;
+            }
+          </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">📬 New Contact Form Submission from RA House Website</div>
+              <div class="content">
+                <p><span class="label">Name:</span> ${firstName} ${lastName}</p>
+                <p><span class="label">Email:</span> <a href="mailto:${email}">${email}</a></p>
+                <p><span class="label">Subject:</span> ${subject}</p>
+                <p><span class="label">Message:</span></p>
+                <p>${message.replace(/\n/g, "<br>")}</p>
+              </div>
+              <div class="footer">
+                This message was sent from the RA House contact form.<br>
+                Please reply directly to the sender if needed.
+              </div>
+            </div>
+          </body>
+          </html>
+        `
+      },
+      {
+        headers: {
+        "api-key": process.env.BREVO_API_KEY,
+        "Content-Type": "application/json"
+        }
+      }
+    );
 
-👤 Name: ${firstName} ${lastName}
-📧 Email: ${email}
-📝 Subject: ${subject}
+    app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "docs", "index.html"));
+    });
 
-💬 Message:
-${message}
-    `
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Email send error:', error);
-      return res.status(500).json({ success: false, error: 'Failed to send email' });
-    }
-    res.status(200).json({ success: true, message: 'Email sent successfully!' });
-  });
+    res.send("Message sent successfully!");
+  } catch (error) {
+    console.error("Email error:", error.response?.data || error.message);
+    res.status(500).send("Failed to send message. Try Again Later!");
+  }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
