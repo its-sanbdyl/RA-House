@@ -103,7 +103,7 @@ const HeightOrigin = window.innerHeight / 3;
       const data = Object.fromEntries(formData.entries());
       const responseEl = document.getElementById('responseMessage');
 
-      const res = await fetch('/send', {
+      const res = await fetch("https://ra-house.onrender.com/contactus.html", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

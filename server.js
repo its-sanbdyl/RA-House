@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const axios = require("axios");
 const path = require("path");
 
@@ -8,11 +9,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const apiKey = process.env.BREVO_API_KEY;
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "docs")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors({
+  origin: "https://www.rahouse.com.np",
+}));
 
-app.post("/send", async (req, res) => {
+app.post("/api/contactus.html", async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
 
   try {
@@ -99,10 +104,6 @@ app.post("/send", async (req, res) => {
         }
       }
     );
-
-    app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "docs", "index.html"));
-    });
 
     res.send("Message sent successfully!");
   } catch (error) {
